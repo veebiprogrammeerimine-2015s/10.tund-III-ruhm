@@ -17,7 +17,6 @@ class InterestsManager {
 		
 	}
 	
-	
 	function addInterest($new_interest){
 		
 		$response = new StdClass();
@@ -118,6 +117,36 @@ class InterestsManager {
 		$stmt->close();
 		
 		return $response;
+		
+	}
+	
+	function getUserInterests(){
+		
+		$html = '';
+		
+		$stmt = $this->connection->prepare("
+	
+		SELECT interests.name FROM user_interests 
+		
+		INNER JOIN interests ON 
+		
+		user_interests.interests_id = interests.id
+			
+		WHERE user_interests.user_id = ?
+		
+		
+		");
+		$stmt->bind_param("i", $this->user_id);
+		$stmt->bind_result($name);
+		$stmt->execute();
+		
+		//iga rea kohta
+		while($stmt->fetch()){
+			$html .= '<p>'.$name.'<p>';
+		}
+		
+		return $html;
+		
 		
 	}
 	

@@ -84,4 +84,6 @@
 	<input type="submit">
 </form>
 
+<br><br>
 
+<?=$InterestsManager->getUserInterests();?>
