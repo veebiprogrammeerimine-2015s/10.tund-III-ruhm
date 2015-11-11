@@ -64,7 +64,23 @@ class InterestsManager {
 
 		//$html .= '<option selected>3</option>';
 		
-		$stmt = $this->connection->prepare("SELECT id, name FROM interests");
+		//$stmt = $this->connection->prepare("SELECT id, name FROM interests");
+		
+		//kuvame ainult puuduolevad huvialad
+		// EI TÖÖTA KORRALIKULT
+		$stmt = $this->connection->prepare("
+		
+		SELECT interests.id, interests.name FROM interests
+		
+		LEFT JOIN user_interests ON
+		
+		interests.id = user_interests.interests_id
+		
+		WHERE user_interests.user_id IS NULL OR user_interests.user_id != ?
+		
+		");
+		
+		$stmt->bind_param("i", $this->user_id);
 		$stmt->bind_result($id, $name);
 		$stmt->execute();
 		

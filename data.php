@@ -45,26 +45,6 @@
 </p>
 
 <h2> Lisa huviala </h2>
-
-  <?php if(isset($add_new_userinterest_response->error)): ?>
-  
-	<p style="color:red;">
-		<?=$add_new_userinterest_response->error->message;?>
-	</p>
-  
-  <?php elseif(isset($add_new_userinterest_response->success)): ?>
-	
-	<p style="color:green;" >
-		<?=$add_new_userinterest_response->success->message;?>
-	</p>
-	
-  <?php endif; ?>
-<form>
-	<input name="new_interest">
-	<input type="submit">
-</form>
-
-<h2>Minu huvialad</h2>
  <?php if(isset($add_new_response->error)): ?>
   
 	<p style="color:red;">
@@ -75,6 +55,26 @@
 	
 	<p style="color:green;" >
 		<?=$add_new_response->success->message;?>
+	</p>
+	
+  <?php endif; ?>
+
+<form>
+	<input name="new_interest">
+	<input type="submit">
+</form>
+
+<h2>Minu huvialad</h2>
+  <?php if(isset($add_new_userinterest_response->error)): ?>
+  
+	<p style="color:red;">
+		<?=$add_new_userinterest_response->error->message;?>
+	</p>
+  
+  <?php elseif(isset($add_new_userinterest_response->success)): ?>
+	
+	<p style="color:green;" >
+		<?=$add_new_userinterest_response->success->message;?>
 	</p>
 	
   <?php endif; ?>
