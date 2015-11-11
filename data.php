@@ -55,4 +55,12 @@
 	<input type="submit">
 </form>
 
+<h2>Minu huvialad</h2>
+
+<form>
+	<!-- siia järele tuleb rippmenüü -->
+	<?=$InterestsManager->createDropdown();?>
+	<input type="submit">
+</form>
+
 

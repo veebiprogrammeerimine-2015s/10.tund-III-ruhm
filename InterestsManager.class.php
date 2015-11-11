@@ -20,6 +20,8 @@ class InterestsManager {
 	
 	function addInterest($new_interest){
 		
+		
+		
 		$response = new StdClass();
 		
 		$stmt = $this->connection->prepare("SELECT id FROM interests WHERE name=?");
@@ -56,5 +58,44 @@ class InterestsManager {
 		
 		return $response;
 	}
+	
+	function createDropdown(){
+		
+		$html = '';
+		
+		$html .= '<select name="new_dd_selection">';
+
+		//$html .= '<option selected>3</option>';
+		
+		$stmt = $this->connection->prepare("SELECT id, name FROM interests");
+		$stmt->bind_result($id, $name);
+		$stmt->execute();
+		
+		//iga rea kohta, mis on ab'is
+		while($stmt->fetch()){
+			$html .= '<option value="'.$id.'">'.$name.'</option>';
+		}
+		
+		
+		$html .= '</select>';
+		return $html;
+		
+	}
+	
+	function addUserInterest(){
+		
+		// 1) kontrollin ega ei ole olemas 
+		
+		
+		//2) lisan juurde
+		
+		//	user_interests
+		
+		// interests_id see mis kasutaja sisestas
+		
+		// user_id on muutujas $this->user_id
+		
+	}
+	
 	
 } ?>
