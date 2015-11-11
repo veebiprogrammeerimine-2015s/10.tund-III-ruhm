@@ -1,5 +1,6 @@
 <?php
 	require_once("functions.php");
+	require_once("InterestsManager.class.php");
 
 	if(!isset($_SESSION["logged_in_user_id"])){
 		header("Location: login.php");
@@ -14,6 +15,9 @@
 		
 		header("Location: login.php");
 	}
+	
+	//uus instants klassist
+	$InterestsManager = new InterestsManager($mysqli, $_SESSION["logged_in_user_id"]);
 	
 ?>
 
